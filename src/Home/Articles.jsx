@@ -10,6 +10,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const BASE_URL = "https://65a3ff17a54d8e805ed44d69.mockapi.io/ANA/";
 
@@ -22,9 +23,11 @@ function Articles() {
   const [active, setActive] = useState(1);
   const [data, setData] = useState([]);
   const [startIndex, setStartIndex] = useState(3); 
-  const [endIndex, setEndIndex] = useState(7)
+  const [endIndex, setEndIndex] = useState(7); 
+  const [isLoading, setIsLoading] = useState(false); 
 
   useEffect(() => {
+    setIsLoading(true);
     try {
       const fetchData = async () => {
         const array = await getData();
@@ -33,6 +36,8 @@ function Articles() {
       fetchData();
     } catch (e) {
         console.log(e);
+    }finally {
+      setIsLoading(false);
     }
   }, []);
 
@@ -60,6 +65,18 @@ function Articles() {
         setEndIndex((s) => s - 4);
         setActive(active - 1);
   };
+
+    if (isLoading)
+      return (
+        <div
+          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status">
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Loading...
+          </span>
+        </div>
+      );
+
   return (
     <div className="container mt-3rem">
       <div className="articles flex gap-3.5 pb-[2rem]">
@@ -76,7 +93,9 @@ function Articles() {
                 <Typography>{d.main_article}</Typography>
               </CardBody>
               <CardFooter className="pt-0">
-                <Button>Read More</Button>
+                <Link to="/blog_post">
+                  <Button className="">Read More</Button>
+                </Link>
               </CardFooter>
             </Card>
           );

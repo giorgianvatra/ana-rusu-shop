@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Carousel, IconButton } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const BASE_URL = "https://65a3ff17a54d8e805ed44d69.mockapi.io/ANA/";
 
 const getData = async () => {
   const response = await axios.get(BASE_URL);
-  console.log(response.data);
   return response.data;
 };
 
@@ -50,9 +50,11 @@ function CarouselDisplay() {
     }
   }, [id]);
 
-  if (isLoading) return <h1>loading...</h1>;
-
-  return (
+  
+ 
+  return isLoading ? (
+    <div className="absolute inset-0">Loading</div>
+  ) : (
     <div className="container mt-[2rem] rounded-xl flex xl:flex-row  md:flex-col sm:flex-col">
       <Carousel
         className="rounded-xl"
@@ -126,10 +128,12 @@ function CarouselDisplay() {
         <p className="text-justify leading-relaxed pt-4">
           {articles.length > 0 && articles[id] ? articles[id].main_article : ""}
         </p>
-        <button className="text-white  bg-[#cb522d] hover:bg-[#c6745b] font-medium rounded-lg text-sm mt-[2rem] px-4 py-2 w-[6rem] hover:">
-          {" "}
-          Search
-        </button>
+        <Link to="/blog_post">
+          <button className="text-white  bg-[#cb522d] hover:bg-[#c6745b] font-medium rounded-lg text-sm mt-[2rem] px-4 py-2 w-[6rem] hover:">
+            {" "}
+            Search
+          </button>
+        </Link>
       </div>
     </div>
   );
