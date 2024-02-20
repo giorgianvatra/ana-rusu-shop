@@ -16,25 +16,15 @@ function BlogPage() {
         </div>
       </div>
       <div className="right bg-cover w-screen h-[55vh] bg-[url('https://www.shutterstock.com/image-photo/bloggingblog-concepts-ideas-white-worktable-600nw-1029506242.jpg')]"></div>
-      <div className="article-container flex p-20">
-        <div className="quote w-50">
-          <p className="text-5xl ">
-            Lorem ipsum dolor sit amet consectetur adipisicing.
+      <div className="article-container grid grid-cols-2 p-20 gap-x-6">
+        <div className="quote ">
+          <p className="text-5xl leading-[4rem]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quo a laudantium.
           </p>
         </div>
-        <article className="text-justify leading-relaxed pt-4 w-50">
+        <article className="text-justify ">
           {/* {articles.length > 0 && articles[id] ? articles[id].main_article : ""} */}
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit debitis
-          iste aliquid. Necessitatibus nulla incidunt, eius id esse nesciunt
-          fugiat assumenda ut? Assumenda eligendi eveniet accusantium nostrum
-          aliquid adipisci consequatur saepe illum. Eum impedit odio ex, eos
-          autem error maiores atque? Quaerat molestiae consectetur, ut
-          laudantium dolores non est harum ab ratione cupiditate commodi dicta,
-          delectus officia minima corrupti explicabo blanditiis reiciendis!
-          Tenetur quis error ut fugit veniam magni, incidunt, facilis numquam
-          doloribus, eius officiis saepe eos! Praesentium sequi saepe cupiditate
-          molestias hic nisi sed numquam velit? Facilis atque at et perspiciatis
-          quidem error nihil itaque vero assumenda consequatur. Possimus?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aperiam, itaque quia iste blanditiis fugiat obcaecati ullam sapiente quisquam eaque, soluta sit. Aperiam veritatis autem, asperiores eos nulla corrupti dignissimos inventore quibusdam natus eum amet fugit maiores unde pariatur necessitatibus excepturi dolor assumenda consequatur perspiciatis impedit! Modi maiores a unde.
           <br />
           <br />
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dolores
