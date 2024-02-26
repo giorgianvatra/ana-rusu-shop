@@ -22,8 +22,8 @@ const getData = async () => {
 function Articles() {
   const [active, setActive] = useState(1);
   const [data, setData] = useState([]);
-  const [startIndex, setStartIndex] = useState(3); 
-  const [endIndex, setEndIndex] = useState(7); 
+  const [startIndex, setStartIndex] = useState(0); 
+  const [endIndex, setEndIndex] =  useState(startIndex + 4); 
   const [isLoading, setIsLoading] = useState(false); 
 
   useEffect(() => {
