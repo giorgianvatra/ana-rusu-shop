@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    
+    <div className="min-w-screen min-h-screen">
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -20,7 +20,7 @@ function App() {
           <Route path="/blog_post" element={<BlogPage />} />
         </Routes>
       </BrowserRouter>
-
+    </div>
   );
 }
 

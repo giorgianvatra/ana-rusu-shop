@@ -9,7 +9,7 @@ import SearchBar from "./SearchBar";
 
 function Banner() {
   return (
-    <div className="w-full h-24 grid grid-cols-3">
+    <div className="w-full h-24 grid sm:grid-rows-3 gap-33  md:grid-rows-3 lg:grid-cols-3 xl: grid-rows-3">
       <div className="flex justify-center items-center gap-3">
         <FontAwesomeIcon
           icon={faPinterest}
@@ -23,8 +23,10 @@ function Banner() {
         <FontAwesomeIcon icon={faEnvelope} className="text-xl text-[#cb522d]" />
       </div>
       <div className=" w-screenflex flex flex-col  justify-center items-center">
-        <h1 className=" text-xl text-center	 font-bold	">Anas Brand Logo</h1>
-        <p className="text-xs text-center	">
+        <h1 className=" text-xl text-center	 font-bold	sm:mx-2 md:hidden">
+          Anas Brand Logo
+        </h1>
+        <p className="text-xs text-center	sm:hidden md:hidden">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vero
         </p>
       </div>

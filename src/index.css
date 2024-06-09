@@ -3,6 +3,8 @@
 @tailwind utilities;
 
  *{
+    
+
     font-family: 'Quicksand', sans-serif;
     margin:0; 
     padding:0; 

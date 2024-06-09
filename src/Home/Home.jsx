@@ -1,5 +1,6 @@
 import Banner from "./Banner/Banner";
 import CarouselDisplay from "./Carousel/Carousel";
+import Footer from "../components/Footer";
 // import Articles from "./Articles";
 
 function Home() {
@@ -8,6 +9,7 @@ function Home() {
       <Banner />
       <CarouselDisplay />
       {/* <Articles /> */}
+      <Footer /> 
     </div>
   );
 }

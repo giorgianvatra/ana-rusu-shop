@@ -50,12 +50,10 @@ function CarouselDisplay() {
     }
   }, [id]);
 
-  
- 
   return isLoading ? (
     <div className="absolute inset-0">Loading</div>
   ) : (
-    <div className="container mt-[2rem] rounded-xl flex xl:flex-row  md:flex-col sm:flex-col">
+    <div className=" mt-[2rem] rounded-xl flex md:flex-col sm:flex-col justify-cente items-center">
       <Carousel
         className="rounded-xl"
         prevArrow={({ handlePrev }) => (
@@ -118,7 +116,7 @@ function CarouselDisplay() {
         ))}
       </Carousel>
 
-      <div className="flex flex-col justify-center items-left gap-1 p-[2rem] ml-10 w-[60vw]">
+      <div className="flex flex-col justify-center items-left gap-1 p-[2rem]  ms:justify-center ms:items-center ml-[0px] w-[85vw] md:ml-10 w-[85vw] lg:ml-10 w-[60vw]">
         <h2 className="font-bold text-[#cb522d] text-xl">
           {articles.length > 0 && articles[id] ? articles[id].subject : ""}
         </h2>
