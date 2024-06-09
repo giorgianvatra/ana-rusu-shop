@@ -78,7 +78,7 @@ function BlogPage() {
             consequatur perspiciatis impedit! Modi maiores a unde.
             <br />
             <br />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dolores
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dolor
             beatae officiis eius aspernatur praesentium voluptatem dolorem ea
             assumenda quidem, esse est ullam. Consequuntur quod fuga sunt rem,
             ab reprehenderit sequi doloribus ipsam quam quis, corrupti iste
