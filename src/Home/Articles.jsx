@@ -23,7 +23,7 @@ function Articles() {
   const [active, setActive] = useState(1);
   const [data, setData] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
-  const [endIndex, setEndIndex] = useState(startIndex + 5ENd);
+  const [endIndex, setEndIndex] = useState(startIndex + 5);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
