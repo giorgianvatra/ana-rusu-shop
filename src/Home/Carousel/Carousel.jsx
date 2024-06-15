@@ -53,7 +53,7 @@ function CarouselDisplay() {
   return isLoading ? (
     <div className="absolute inset-0">Loading</div>
   ) : (
-    <div className=" mt-[2rem] rounded-xl flex md:flex-col sm:flex-col justify-cente items-center">
+    <div className="w-10/12 mt-[2rem] rounded-xl flex md:flex-col sm:flex-col justify-cente items-center w">
       <Carousel
         className="rounded-xl"
         prevArrow={({ handlePrev }) => (

@@ -13,7 +13,7 @@ import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 const BASE_URL = "https://65a3ff17a54d8e805ed44d69.mockapi.io/ANA/";
-
+const width = window.innerWidth;
 const getData = async () => {
   const response = await axios.get(BASE_URL);
   return response.data;
@@ -22,9 +22,18 @@ const getData = async () => {
 function Articles() {
   const [active, setActive] = useState(1);
   const [data, setData] = useState([]);
-  const [startIndex, setStartIndex] = useState(0); 
-  const [endIndex, setEndIndex] =  useState(startIndex + 4); 
-  const [isLoading, setIsLoading] = useState(false); 
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(startIndex + 5ENd);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (width <= 1050) {
+      setEndIndex(startIndex + 3);
+    }
+    if (width < 850) {
+      setEndIndex(startIndex + 2);
+    }
+  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,51 +44,62 @@ function Articles() {
       };
       fetchData();
     } catch (e) {
-        console.log(e);
-    }finally {
+      console.log(e);
+    } finally {
       setIsLoading(false);
     }
   }, []);
 
-  
   const getItemProps = (index) => ({
     variant: active === index ? "filled" : "text",
     color: "gray",
     onClick: () => {
-        setStartIndex(index * 4-1);
-        setEndIndex(3 + index * 4);
-        setActive(index)
+      setStartIndex(index * 4 - 1);
+      setEndIndex(3 + index * 4);
+      setActive(index);
     },
   });
 
   const next = () => {
-    if (active === 5) return;
-    setStartIndex((s)=> s + 4);
-    setEndIndex((s) => s + 4);
-    setActive(active + 1);
+    // Displat 5 cards if the window size is greater or equal to 1050
+
+    if (window.innerWidth >= 1050) {
+      if (active === 5) return;
+      setStartIndex((s) => s + 4);
+      setEndIndex((s) => s + 4);
+      setActive(active + 1);
+    }
+    // Displat 5 cards if the window size is between 1050 and
+
+    if (window.innerWidth < 1050) {
+      if (active === 4) return;
+      setStartIndex((s) => s + 3);
+      setEndIndex((s) => s + 3);
+      setActive(active + 1);
+    }
   };
 
   const prev = () => {
     if (active === 1) return;
-        setStartIndex((s) => s - 4);
-        setEndIndex((s) => s - 4);
-        setActive(active - 1);
+    setStartIndex((s) => s - 4);
+    setEndIndex((s) => s - 4);
+    setActive(active - 1);
   };
 
-    if (isLoading)
-      return (
-        <div
-          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status">
-          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Loading...
-          </span>
-        </div>
-      );
+  if (isLoading)
+    return (
+      <div
+        className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        role="status">
+        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+          Loading...
+        </span>
+      </div>
+    );
 
   return (
-    <div className="container mt-3rem">
-      <div className="articles flex gap-3.5 pb-[2rem]">
+    <div className="container w-9/12 mt-3rem flex flex-col justify-center items-center">
+      <div className="articles flex gap-3.5 pb-[2rem] justiy-center items-center">
         {data.slice(startIndex, endIndex).map((d, index) => {
           return (
             <Card key={index} className="mt-6 w-96">
