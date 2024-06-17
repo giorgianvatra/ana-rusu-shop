@@ -15,6 +15,8 @@ function CarouselDisplay() {
   const [articles, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+
+
   function increaseId() {
     if (id >= 2) {
       setId(0);
@@ -126,8 +128,12 @@ function CarouselDisplay() {
         <p className="text-justify leading-relaxed pt-4">
           {articles.length > 0 && articles[id] ? articles[id].main_article : ""}
         </p>
-        <Link to="/blog_post">
-          <button className="text-white  bg-[#cb522d] hover:bg-[#c6745b] font-medium rounded-lg text-sm mt-[2rem] px-4 py-2 w-[6rem] hover:">
+        <Link to={{pathname : "/blog_post", 
+          search : '?id_param=' + (id  + 1), 
+        }}>
+          <button
+           
+            className="text-white  bg-[#cb522d] hover:bg-[#c6745b] font-medium rounded-lg text-sm mt-[2rem] px-4 py-2 w-[6rem] hover:">
             {" "}
             Search
           </button>

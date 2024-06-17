@@ -31,7 +31,9 @@ function Articles() {
     const handleNumberOfCardsOnScreenResize = () => {
       
       let width = window.innerWidth; 
-    
+      if (width > 2000) {
+        setEndIndex(startIndex + 5);
+      }
       if (width > 1725) {
         setEndIndex(startIndex + 4);
       }

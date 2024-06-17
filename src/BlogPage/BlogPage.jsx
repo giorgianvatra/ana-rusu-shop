@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DateObject from "react-date-object";
+import { useLocation } from "react-router-dom";
 
 const BASE_URL = "https://65a3ff17a54d8e805ed44d69.mockapi.io/ANA/";
 
@@ -14,7 +15,9 @@ let getData = async (index) => {
 };
 
  function convertSecondsToDate(seconds) {
+
   const date = new DateObject(seconds);
+ 
 
 
    return date.format("dddd DD MMMM"); 
@@ -23,12 +26,14 @@ let getData = async (index) => {
 function BlogPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [article, setArticle] = useState();
-
+  const location = useLocation(); 
+  const id = new URLSearchParams(location.search).get('id_param'); 
+ 
   useEffect(() => {
     try {
       setIsLoading(true);
       const fetchData = async () => {
-        let theArticle = await getData(1);
+        let theArticle = await getData(id);
         setArticle(theArticle);
         console.log(article.title);
         console.log(new Date(article.date * 1000));
@@ -48,19 +53,24 @@ function BlogPage() {
     return (
       <div className="">
         <hr />
-        <div className="px-14 py-20 bg-[#C3E2C2] border border-t-white">
-          <div className="">
-            <p className="text-[#cb522d] date mb-8">{date}</p>
-            <h1 className="text-[#cb522d] font-bold text-4xl pb-20 w-[50vw]">
-              {article ? article.title : ""}
-            </h1>
-            <div>
-              <p className="text-[#cb522d] font-light">Written by</p>
-              <p className="author text-[#cb522d] font-bold">Ana-Maria Rusu</p>
+        <div className="banner-container flex flex-row">
+          <div className="px-14 py-20 bg-[#C3E2C2] border border-t-white w-[25vw]">
+            <div className="">
+              <p className="text-[#cb522d] date mb-8">{date}</p>
+              <h1 className="text-[#cb522d] font-bold text-4xl pb-20 w-[50vw]">
+                {article ? article.title : ""}
+              </h1>
+              <div>
+                <p className="text-[#cb522d] font-light">Written by</p>
+                <p className="author text-[#cb522d] font-bold">
+                  Ana-Maria Rusu
+                </p>
+              </div>
             </div>
           </div>
+          <div className="w-[75vw] right bg-cover w-screen h-[55vh] bg-[url('https://www.shutterstock.com/image-photo/bloggingblog-concepts-ideas-white-worktable-600nw-1029506242.jpg')]"></div>
         </div>
-        <div className="right bg-cover w-screen h-[55vh] bg-[url('https://www.shutterstock.com/image-photo/bloggingblog-concepts-ideas-white-worktable-600nw-1029506242.jpg')]"></div>
+
         <div className="article-container grid grid-cols-2 p-20 gap-x-6 md:grid-cols-1 gap-y-6 sm:grid-cols-1 gap-y-6 ">
           <div className="quote ">
             <p className="text-5xl leading-[4rem] md:text-4xl sm:text-3xl">
