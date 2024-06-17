@@ -13,7 +13,7 @@ import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 const BASE_URL = "https://65a3ff17a54d8e805ed44d69.mockapi.io/ANA/";
-const width = window.innerWidth;
+
 const getData = async () => {
   const response = await axios.get(BASE_URL);
   return response.data;
@@ -25,6 +25,15 @@ function Articles() {
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(startIndex + 5);
   const [isLoading, setIsLoading] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  
+  useEffect(() => {
+    const handleWidthChange = () => {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleWidthChange)
+  }, []); 
+
 
   useEffect(() => {
     if (width <= 1050) {
