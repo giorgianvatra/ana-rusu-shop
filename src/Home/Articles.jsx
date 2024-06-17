@@ -23,26 +23,32 @@ function Articles() {
   const [active, setActive] = useState(1);
   const [data, setData] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
-  const [endIndex, setEndIndex] = useState(startIndex + 5);
+  const [endIndex, setEndIndex] = useState(startIndex + 4);
   const [isLoading, setIsLoading] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
   
-  useEffect(() => {
-    const handleWidthChange = () => {
-      setWidth(window.innerWidth);
+ 
+ useEffect(() => {
+    const handleNumberOfCardsOnScreenResize = () => {
+      
+      let width = window.innerWidth; 
+    
+      if (width > 1725) {
+        setEndIndex(startIndex + 4);
+      }
+      if (width <= 1425) {
+        setEndIndex(startIndex + 3);
+      }
+      if (width <= 1200) {
+        setEndIndex(startIndex + 2);
+      }
+      if (width < 850) {
+        setEndIndex(startIndex + 1);
+      }
+      console.log("triggered with width: " +  width)
     }
-    window.addEventListener('resize', handleWidthChange)
-  }, []); 
 
-
-  useEffect(() => {
-    if (width <= 1050) {
-      setEndIndex(startIndex + 3);
-    }
-    if (width < 850) {
-      setEndIndex(startIndex + 2);
-    }
-  });
+    window.addEventListener('resize', handleNumberOfCardsOnScreenResize)
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -70,7 +76,6 @@ function Articles() {
   });
 
   const next = () => {
-    // Displat 5 cards if the window size is greater or equal to 1050
 
     if (window.innerWidth >= 1050) {
       if (active === 5) return;
@@ -78,7 +83,6 @@ function Articles() {
       setEndIndex((s) => s + 4);
       setActive(active + 1);
     }
-    // Displat 5 cards if the window size is between 1050 and
 
     if (window.innerWidth < 1050) {
       if (active === 4) return;
