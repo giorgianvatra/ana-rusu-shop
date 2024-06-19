@@ -25,32 +25,27 @@ function Articles() {
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(startIndex + 4);
   const [isLoading, setIsLoading] = useState(false);
-  
- 
- useEffect(() => {
-    const handleNumberOfCardsOnScreenResize = () => {
-      
-      let width = window.innerWidth; 
-      if (width > 2000) {
-        setEndIndex(startIndex + 5);
-      }
-      if (width > 1725) {
-        setEndIndex(startIndex + 4);
-      }
-      if (width <= 1425) {
-        setEndIndex(startIndex + 3);
-      }
-      if (width <= 1200) {
-        setEndIndex(startIndex + 2);
-      }
-      if (width < 850) {
-        setEndIndex(startIndex + 1);
-      }
-      console.log("triggered with width: " +  width)
-    }
 
-    window.addEventListener('resize', handleNumberOfCardsOnScreenResize)
-  }, []);
+  const handleNumberOfCardsOnScreenResize = () => {
+    let width = window.innerWidth;
+   
+    if (width > 1725) {
+      setEndIndex(4);
+    }
+    if (width <= 1425) {
+      setEndIndex(3);
+    }
+    if (width <= 1200) {
+      setEndIndex(2);
+    }
+    if (width < 850) {
+      setEndIndex(1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleNumberOfCardsOnScreenResize);
+  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -71,33 +66,29 @@ function Articles() {
     variant: active === index ? "filled" : "text",
     color: "gray",
     onClick: () => {
-      setStartIndex(index * 4 - 1);
-      setEndIndex(3 + index * 4);
-      setActive(index);
+      setStartIndex(0);
+      handleNumberOfCardsOnScreenResize();
+      setStartIndex((index - 1) * endIndex);
+      setEndIndex(index * endIndex);
+      setActive(index)
+
+      console.log("end index: " + endIndex);
+      console.log("start index: " + startIndex);
+
     },
   });
 
   const next = () => {
-
-    if (window.innerWidth >= 1050) {
-      if (active === 5) return;
-      setStartIndex((s) => s + 4);
-      setEndIndex((s) => s + 4);
-      setActive(active + 1);
-    }
-
-    if (window.innerWidth < 1050) {
-      if (active === 4) return;
-      setStartIndex((s) => s + 3);
-      setEndIndex((s) => s + 3);
-      setActive(active + 1);
-    }
+    if (active === 5) return;
+    setStartIndex(endIndex);
+    setEndIndex(endIndex + endIndex - startIndex);
+    setActive(active + 1);
   };
 
   const prev = () => {
     if (active === 1) return;
-    setStartIndex((s) => s - 4);
-    setEndIndex((s) => s - 4);
+    setStartIndex(startIndex - (endIndex - startIndex));
+    setEndIndex(endIndex - (endIndex - startIndex));
     setActive(active - 1);
   };
 
