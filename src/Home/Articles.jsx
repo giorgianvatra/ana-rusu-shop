@@ -28,7 +28,7 @@ function Articles() {
 
   const handleNumberOfCardsOnScreenResize = () => {
     let width = window.innerWidth;
-   
+
     if (width > 1725) {
       setEndIndex(4);
     }
@@ -70,11 +70,10 @@ function Articles() {
       handleNumberOfCardsOnScreenResize();
       setStartIndex((index - 1) * endIndex);
       setEndIndex(index * endIndex);
-      setActive(index)
+      setActive(index);
 
       console.log("end index: " + endIndex);
       console.log("start index: " + startIndex);
-
     },
   });
 
@@ -106,26 +105,28 @@ function Articles() {
   return (
     <div className="container w-9/12 mt-3rem flex flex-col justify-center items-center">
       <div className="articles flex gap-3.5 pb-[2rem] justiy-center items-center">
-        {data.slice(startIndex, endIndex).map((d, index) => {
-          return (
-            <Card key={index} className="mt-6 w-96">
-              <CardHeader color="blue-gray" className="relative h-56">
-                <img src={d.image} alt="card-image" />
-              </CardHeader>
-              <CardBody>
-                <Typography variant="h5" color="blue-gray" className="mb-2">
-                  {d.title}
-                </Typography>
-                <Typography>{d.main_article}</Typography>
-              </CardBody>
-              <CardFooter className="pt-0">
-                <Link to="/blog_post">
-                  <Button className="">Read More</Button>
-                </Link>
-              </CardFooter>
-            </Card>
-          );
-        })}
+        {data
+          .slice((active - 1) * endIndex, active * endIndex)
+          .map((d, index) => {
+            return (
+              <Card key={index} className="mt-6 w-96">
+                <CardHeader color="blue-gray" className="relative h-56">
+                  <img src={d.image} alt="card-image" />
+                </CardHeader>
+                <CardBody>
+                  <Typography variant="h5" color="blue-gray" className="mb-2">
+                    {d.title}
+                  </Typography>
+                  <Typography>{d.main_article}</Typography>
+                </CardBody>
+                <CardFooter className="pt-0">
+                  <Link to="/blog_post">
+                    <Button className="">Read More</Button>
+                  </Link>
+                </CardFooter>
+              </Card>
+            );
+          })}
       </div>
 
       <div className="flex items-center gap-4 justify-center p-[2rem]">
