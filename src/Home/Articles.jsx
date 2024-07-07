@@ -66,14 +66,7 @@ function Articles() {
     variant: active === index ? "filled" : "text",
     color: "gray",
     onClick: () => {
-      setStartIndex(0);
-      handleNumberOfCardsOnScreenResize();
-      setStartIndex((index - 1) * endIndex);
-      setEndIndex(index * endIndex);
       setActive(index);
-
-      console.log("end index: " + endIndex);
-      console.log("start index: " + startIndex);
     },
   });
 
