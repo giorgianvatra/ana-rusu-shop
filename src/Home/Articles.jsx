@@ -66,21 +66,20 @@ function Articles() {
     variant: active === index ? "filled" : "text",
     color: "gray",
     onClick: () => {
+
       setActive(index);
+
+    
     },
   });
 
   const next = () => {
     if (active === 5) return;
-    setStartIndex(endIndex);
-    setEndIndex(endIndex + endIndex - startIndex);
     setActive(active + 1);
   };
 
   const prev = () => {
     if (active === 1) return;
-    setStartIndex(startIndex - (endIndex - startIndex));
-    setEndIndex(endIndex - (endIndex - startIndex));
     setActive(active - 1);
   };
 
