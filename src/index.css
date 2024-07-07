@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ *{
+    
+
+    font-family: 'Quicksand', sans-serif;
+    margin:0; 
+    padding:0; 
+    box-sizing: border-box;
+ }
+
+/* 
+main: C3E2C2
+
+*/
+
+nav { 
+
+    background-color: #C3E2C2;
+}
+li{ 
+    /* background-color: #ecddd8; */
+    cursor: pointer;
+}
+li:hover { 
+
+    color: #cb522d;
+}
