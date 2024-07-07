@@ -112,7 +112,11 @@ function Articles() {
                   <Typography>{d.main_article}</Typography>
                 </CardBody>
                 <CardFooter className="pt-0">
-                  <Link to="/blog_post">
+                  <Link
+                    to={{
+                      pathname: "/blog_post",
+                      search: "?id_param=" + (index + 1 + (active - 1) * endIndex),
+                    }}>
                     <Button className="">Read More</Button>
                   </Link>
                 </CardFooter>
