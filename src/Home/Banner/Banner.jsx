@@ -9,7 +9,7 @@ import SearchBar from "./SearchBar";
 
 function Banner() {
   return (
-    <div className="w-full h-24 grid sm:grid-rows-3 gap-33  md:grid-rows-3 lg:grid-cols-3 xl: grid-rows-3">
+    <div className="w-full h-24 grid sm:grid-rows-3 gap-33  md:grid-rows-3 lg:grid-cols-3 xl: grid-rows-3 mt-[2rem]">
       <div className="flex justify-center items-center gap-3">
         <FontAwesomeIcon
           icon={faPinterest}
