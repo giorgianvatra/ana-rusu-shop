@@ -9,10 +9,10 @@ import Banner from "./Home/Banner/Banner";
 
 function App() {
   return (
-    <div className="min-w-screen min-h-screen">
+    <div className="min-w-screen min-h-screen flex flex-col">
       <BrowserRouter>
         <Navbar />
-        <Banner></Banner>
+        <Banner/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about_me" element={<AboutMe />} />
