@@ -6,6 +6,7 @@ import Posts from "./Posts/Posts";
 import BlogPage from "./BlogPage/BlogPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Banner from "./Home/Banner/Banner";
+import AdminPage from "./AdminPage/AdminPage";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path="/about_me" element={<AboutMe />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/blog_post" element={<BlogPage />} />
-        </Routes>
+          <Route path="/admin" element={<AdminPage />} />   
+   </Routes>
       </BrowserRouter>
     </div>
   );
