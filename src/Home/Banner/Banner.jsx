@@ -65,7 +65,7 @@ function Banner() {
           </form>
         </div>
       </div>
-      \{" "}
+      {" "}
     </>
   );
 }

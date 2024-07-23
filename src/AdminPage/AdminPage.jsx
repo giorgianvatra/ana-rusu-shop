@@ -28,9 +28,9 @@ function AdminPage() {
     }
   }, []);
   return (
-    <div>
+    <div className="flex flex-col gap-[2rem] justify-center items-center">
       {articles.map((article, index) => {
-        return <Cards key={index} title={article.title} />;
+        return <Cards key={index} image={article.image} title={article.title} />;
       })}
     </div>
   );
