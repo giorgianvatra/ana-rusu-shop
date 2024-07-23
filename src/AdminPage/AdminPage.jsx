@@ -27,7 +27,12 @@ function AdminPage() {
       setIsLoading(false);
     }
   }, []);
+
+  if(isLoading){
+    return <div>is loading .....</div>
+  }
   return (
+  
     <div className="flex flex-col gap-[2rem] justify-center items-center">
       {articles.map((article, index) => {
         return <Cards key={index} image={article.image} title={article.title} />;

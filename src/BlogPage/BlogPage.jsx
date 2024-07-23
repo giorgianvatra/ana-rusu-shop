@@ -14,7 +14,7 @@ let getData = async (index) => {
   }
 };
 
- function convertSecondsToDate(seconds) {
+  function convertSecondsToDate(seconds) {
 
   const date = new DateObject(seconds);
  
@@ -24,26 +24,21 @@ let getData = async (index) => {
  }
 
 function BlogPage() {
-  const [isLoading, setIsLoading] = useState(false);
   const [article, setArticle] = useState();
   const location = useLocation(); 
   const id = new URLSearchParams(location.search).get('id_param'); 
  
   useEffect(() => {
     try {
-      setIsLoading(true);
       const fetchData = async () => {
         let theArticle = await getData(id);
         setArticle(theArticle);
-        console.log(article.title);
-        console.log(new Date(article.date * 1000));
+       
       };
       fetchData();
     } catch (e) {
       console.error(e);
-    } finally {
-      setIsLoading(false);
-    }
+    } 
   }, []);
 
 
@@ -103,6 +98,8 @@ function BlogPage() {
         </div>
       </div>
     );
+  }else{
+    console.log("isLoading")
   }
   
 }

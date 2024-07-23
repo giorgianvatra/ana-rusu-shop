@@ -7,6 +7,7 @@ import BlogPage from "./BlogPage/BlogPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Banner from "./Home/Banner/Banner";
 import AdminPage from "./AdminPage/AdminPage";
+import EditComponentForm from "./AdminPage/EditComponentForm";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/posts" element={<Posts />} />
           <Route path="/blog_post" element={<BlogPage />} />
           <Route path="/admin" element={<AdminPage />} />   
+          <Route path="/edit-page" element={<EditComponentForm />} />
    </Routes>
       </BrowserRouter>
     </div>

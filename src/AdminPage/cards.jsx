@@ -1,5 +1,4 @@
-
-
+import PropTypes from "prop-types";
 
 
 function Cards(props) {
@@ -21,4 +20,9 @@ function Cards(props) {
   );
 }
 
-export default Cards
+export default Cards;
+
+Cards.propTypes = {
+  image: PropTypes.string,
+  title: PropTypes.string,
+};
