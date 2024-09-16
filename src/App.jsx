@@ -21,7 +21,7 @@ function App() {
           <Route path="/posts" element={<Posts />} />
           <Route path="/blog_post" element={<BlogPage />} />
           <Route path="/admin" element={<AdminPage />} />   
-          <Route path="/edit-page" element={<EditComponentForm />} />
+          <Route path="/edit_article" element={<EditComponentForm />} />
    </Routes>
       </BrowserRouter>
     </div>
