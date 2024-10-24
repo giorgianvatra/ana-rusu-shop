@@ -115,7 +115,7 @@ function Articles() {
                   <Link
                     to={{
                       pathname: "/blog_post",
-                      search: "?id_param=" + (index + 1 + (active - 1) * endIndex),
+                      search: "?id_param=" + (d.id),
                     }}>
                     <Button className="">Read More</Button>
                   </Link>

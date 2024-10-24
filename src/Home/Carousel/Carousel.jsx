@@ -129,7 +129,7 @@ function CarouselDisplay() {
           {articles.length > 0 && articles[id] ? articles[id].main_article : ""}
         </p>
         <Link to={{pathname : "/blog_post", 
-          search : '?id_param=' + (id  + 1), 
+          search : '?id_param=' + (articles[id] ? articles[id].id : ''), 
         }}>
           <button
            
